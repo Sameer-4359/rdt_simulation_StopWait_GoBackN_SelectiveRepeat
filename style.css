@@ -1,0 +1,132 @@
+/* General Page Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  padding: 20px;
+  background-color: #f0f2f5;
+}
+
+.network {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  position: relative;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.sender, .receiver {
+  width: 100px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.channel {
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  height: 50px;
+  top: 25px;
+  border-top: 2px dashed #666;
+}
+
+.packet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px 10px;
+  background: #3498db;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.log {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  background: #f9f9f9;
+  font-family: monospace;
+}
+
+@keyframes movePacket {
+  from {
+    left: 100px;
+  }
+  to {
+    left: calc(100% - 160px);
+  }
+}
+
+/* ACKs */
+.ack {
+  position: absolute;
+  bottom: 30px;
+  left: calc(100% - 160px);
+  width: 60px;
+  height: 30px;
+  background-color: #ff9800;
+  color: white;
+  line-height: 30px;
+  font-weight: bold;
+  border-radius: 6px;
+  text-align: center;
+  animation: moveAck 1.5s linear forwards;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes moveAck {
+  from {
+    left: calc(100% - 160px);
+  }
+  to {
+    left: 100px;
+  }
+}
+
+
+
+/* Buffered Packet Highlight */
+.buffered {
+  box-shadow: 0 0 8px 4px rgba(0, 150, 255, 0.5);
+  border: 2px solid rgba(0, 150, 255, 0.8);
+  animation: pulseGlow 1.6s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 8px 4px rgba(0, 150, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 14px 7px rgba(0, 150, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 8px 4px rgba(0, 150, 255, 0.4);
+  }
+}
+
+/* Retransmission Shake */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
+}
+
+/* Glitch Effect for Corruption */
+.corrupt-glitch {
+  animation: glitch 0.6s ease-in-out;
+}
+
+@keyframes glitch {
+  0%   { transform: skewX(0deg); }
+  20%  { transform: skewX(6deg) scale(1.01); }
+  40%  { transform: skewX(-6deg) scale(0.99); }
+  60%  { transform: skewX(4deg); }
+  80%  { transform: skewX(-4deg); }
+  100% { transform: skewX(0deg); }
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reliable Data Transfer Simulation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>RDT 3.0 Simulation - Stop-and-Wait</h1>
+
+  <div class="network">
+    <div id="sender-container">
+      <div class="title">Sender</div>
+      <div id="sender" class="packet-box"></div>
+    </div>
+
+    <div id="channel" class="channel"></div>
+
+    <div id="receiver-container">
+      <div class="title">Receiver</div>
+      <div id="receiver" class="packet-box"></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button onclick="startSimulation()">Start rdt 3.0</button>
+    <button onclick="startGBN()">Start Go-Back-N</button>
+    <button onclick="startSR()">Start Selective Repeat</button>
+  </div>
+
+  <div class="log" id="log"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
