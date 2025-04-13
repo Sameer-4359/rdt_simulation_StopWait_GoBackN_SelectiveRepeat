@@ -1,132 +1,226 @@
-/* General Page Styling */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #f0f2f5;
   text-align: center;
   padding: 20px;
-  background-color: #f0f2f5;
 }
 
 .network {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
   position: relative;
-  margin: 20px;
-  padding: 20px;
+  height: 150px;
+  margin: 30px auto;
+  padding: 0 100px;
+  max-width: 1000px;
+  background: #fff;
   border: 1px solid #ccc;
+}
+
+#sender-container, #receiver-container {
+  flex: 1;
+  background-color: #e0f7fa;
+  border: 2px solid #0077cc;
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 150px;
+}
+.sender, .receiver {
+  width: 100px;
+  height: 80px;
+  line-height: 80px;
+  background: #e0f7fa;
+  border: 2px solid #00796b;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.title {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #0077cc;
+}
+
+#channel {
+  flex: 2;
+  background-color: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  min-height: 120px;
+  position: relative;
+}
+.packet, .ack {
+  position: absolute;
+  width: 60px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  background: #1976d2;
+  border-radius: 5px;
+  top: 10px;
+}
+
+.ack {
+  background: #43a047;
+  top: 40px;
+}
+
+.corrupt-glitch {
+  animation: glitch 0.2s infinite;
+  background: #f44336 !important;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(2px, -1px); }
+  75% { transform: translate(-1px, 2px); }
+  100% { transform: translate(1px, -2px); }
+}
+
+.log {
+  margin-top: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #aaa;
+  background: #f9f9f9;
+  padding: 10px;
+  font-family: monospace;
+  text-align: left;
+} */
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(to right, #e3f2fd, #fce4ec);
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+h1 {
+  color: #0d47a1;
+  margin-bottom: 20px;
+}
+
+.network {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 180px;
+  margin: 30px auto;
+  padding: 20px 60px;
+  max-width: 1100px;
+  background: #ffffff;
+  border: 2px solid #90caf9;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#sender-container, #receiver-container {
+  flex: 1;
+  background-color: #e3f2fd;
+  border: 2px solid #42a5f5;
+  border-radius: 12px;
+  padding: 15px;
+  min-height: 160px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
 }
 
 .sender, .receiver {
   width: 100px;
+  height: 80px;
+  line-height: 80px;
+  background: #b3e5fc;
+  border: 2px solid #0288d1;
+  border-radius: 10px;
+  font-weight: bold;
+  margin: 0 auto;
+  color: #01579b;
+}
+
+.title {
+  font-weight: bold;
   text-align: center;
-  font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #0d47a1;
 }
 
-.channel {
+#channel {
+  flex: 2;
+  background-color: #f3f3f3;
+  border: 2px dashed #aaa;
+  border-radius: 10px;
+  min-height: 120px;
+  position: relative;
+  margin: 0 15px;
+}
+
+.packet, .ack {
   position: absolute;
-  left: 100px;
-  right: 100px;
-  height: 50px;
-  top: 25px;
-  border-top: 2px dashed #666;
-}
-
-.packet {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 5px 10px;
-  background: #3498db;
-  color: white;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.log {
-  max-height: 300px;
-  overflow-y: auto;
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid #aaa;
-  background: #f9f9f9;
-  font-family: monospace;
-}
-
-@keyframes movePacket {
-  from {
-    left: 100px;
-  }
-  to {
-    left: calc(100% - 160px);
-  }
-}
-
-/* ACKs */
-.ack {
-  position: absolute;
-  bottom: 30px;
-  left: calc(100% - 160px);
   width: 60px;
-  height: 30px;
-  background-color: #ff9800;
-  color: white;
-  line-height: 30px;
-  font-weight: bold;
-  border-radius: 6px;
+  height: 25px;
+  line-height: 25px;
   text-align: center;
-  animation: moveAck 1.5s linear forwards;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  color: white;
+  background: #1976d2;
+  border-radius: 5px;
+  top: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
-@keyframes moveAck {
-  from {
-    left: calc(100% - 160px);
-  }
-  to {
-    left: 100px;
-  }
+.ack {
+  background: #43a047;
+  top: 40px;
 }
 
-
-
-/* Buffered Packet Highlight */
-.buffered {
-  box-shadow: 0 0 8px 4px rgba(0, 150, 255, 0.5);
-  border: 2px solid rgba(0, 150, 255, 0.8);
-  animation: pulseGlow 1.6s infinite ease-in-out;
-}
-
-@keyframes pulseGlow {
-  0% {
-    box-shadow: 0 0 8px 4px rgba(0, 150, 255, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 14px 7px rgba(0, 150, 255, 0.6);
-  }
-  100% {
-    box-shadow: 0 0 8px 4px rgba(0, 150, 255, 0.4);
-  }
-}
-
-/* Retransmission Shake */
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-3px); }
-}
-
-/* Glitch Effect for Corruption */
 .corrupt-glitch {
-  animation: glitch 0.6s ease-in-out;
+  animation: glitch 0.2s infinite;
+  background: #f44336 !important;
 }
 
 @keyframes glitch {
-  0%   { transform: skewX(0deg); }
-  20%  { transform: skewX(6deg) scale(1.01); }
-  40%  { transform: skewX(-6deg) scale(0.99); }
-  60%  { transform: skewX(4deg); }
-  80%  { transform: skewX(-4deg); }
-  100% { transform: skewX(0deg); }
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(2px, -1px); }
+  75% { transform: translate(-1px, 2px); }
+  100% { transform: translate(1px, -2px); }
+}
+
+.log {
+  margin-top: 25px;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #bbb;
+  background: #fafafa;
+  padding: 12px;
+  font-family: monospace;
+  text-align: left;
+  border-radius: 8px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+.controls {
+  margin: 20px 0;
+}
+
+button {
+  background-color: #42a5f5;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  margin: 0 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1e88e5;
 }

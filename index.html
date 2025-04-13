@@ -23,13 +23,18 @@
   </div>
 
   <div class="controls">
-    <button onclick="startSimulation()">Start rdt 3.0</button>
-    <button onclick="startGBN()">Start Go-Back-N</button>
+    <button onclick="startSimulation()">Start (Stop and Wait)</button>
+    <button onclick="startGBNSimulation()">Start GBN</button>
     <button onclick="startSR()">Start Selective Repeat</button>
   </div>
 
   <div class="log" id="log"></div>
 
-  <script src="script.js"></script>
+  <script src="utlis.js"></script>
+  <script src="stopAndWait.js"></script>
+  <script src="GBN.js"></script>
+  <script src="SR.js"></script>
+
+  
 </body>
 </html>
